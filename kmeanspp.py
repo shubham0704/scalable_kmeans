@@ -38,7 +38,6 @@ def createCent(dataSet, K,sampling_factor=2):
     Dx = array([min([distEclud(c, x) for c in candidate_centers]) for x in dataSet])
     psi = sum(Dx)
     l = int(ceil(log(psi)))
-    thisisit = 1
 
     for k in range(l):
         
@@ -53,17 +52,7 @@ def createCent(dataSet, K,sampling_factor=2):
                 if r < p:
                     i = j
                     break       
-            candidate_centers.append(dataSet[i, :].tolist()[0])
-            '''
-            while(thisisit>0):
-				thisisit = 0
-				print 'candidate_centers are:\n',candidate_centers,'\n','#########','\n'
-				print dataSet_temp,'\n','#########','\n'
-				print dataSet_temp.pop(i),'\n','#########','\n'
-				print dataSet_temp,'\n','#########','\n'
-				print '\ncandidate_centers are:\n',candidate_centers,'\n','#########','\n'
-			'''	
-        
+            candidate_centers.append(dataSet[i, :].tolist()[0])        
         #parallel job stop
         
     w = [0 for _ in range(len(candidate_centers))]
@@ -86,8 +75,10 @@ def createCent(dataSet, K,sampling_factor=2):
         for j,p in enumerate(cumsprobs):
             if r < p:
                 index = j
-                elected_centers.append(candidate_centers[index])
-                break
+                if candidate_centers[index] not in elected_centers:
+					elected_centers.append(candidate_centers[index])
+					break
+				
                
     return elected_centers
         

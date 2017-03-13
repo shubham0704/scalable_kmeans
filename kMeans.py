@@ -65,7 +65,7 @@ def randCent(dataSet, K):
         '''
         r = random.rand()
         probs = Dx/sum(Dx)
-        cumsprobs = scipy.cumsum(probs)
+        cumsprobs = cumsum(probs)
         
         for j,p in enumerate(cumsprobs):
             if r < p:
@@ -86,6 +86,7 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
     m = shape(dataSet)[0]
     clusterAssment = mat(zeros((m, 2)))
     centroids = mat(createCent(dataSet, k))
+    print 'centroids are:',centroids
     clusterChanged = True
     while clusterChanged:
         clusterChanged = False

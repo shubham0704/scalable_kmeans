@@ -13,6 +13,7 @@ dataMat = np.mat(kMeans.loadDataSet('testSet.txt'))
 x = dataMat[:,0]
 y = dataMat[:,1]
 centers,clusterAssgn = kMeans.kMeans(dataSet=dataMat,k=4,createCent = kmeanspp.createCent)
+#centers,clusterAssgn = kMeans.kMeans(dataSet=dataMat,k=4)
 #print '\nthe centers are\n'
 #print centers
 #print clusterAssgn
