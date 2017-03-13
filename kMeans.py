@@ -85,7 +85,7 @@ def randCent(dataSet, K):
 def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
     m = shape(dataSet)[0]
     clusterAssment = mat(zeros((m, 2)))
-    centroids = createCent(dataSet, k)
+    centroids = mat(createCent(dataSet, k))
     clusterChanged = True
     while clusterChanged:
         clusterChanged = False
@@ -97,7 +97,7 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
                      minDist = distJI;minIndex = j
             if clusterAssment[i,0] != minIndex: clusterChanged = True
             clusterAssment[i,:] = minIndex,minDist**2
-        print centroids
+        #print centroids
         for cent in range(k):
             #matrix.A is used to create a matrix into a numpy array
             ptsInClust = dataSet[nonzero(clusterAssment[:,0].A==cent)[0]]

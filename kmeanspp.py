@@ -1,4 +1,4 @@
-from kMeans import kMeans
+
 from math import log,ceil
 from numpy import *
 
