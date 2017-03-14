@@ -26,7 +26,6 @@ def createCent(dataSet, K,sampling_factor=2):
     
     '''
         
-    n =shape(dataSet)[0]
     elected_centers = []
     candidate_centers = []
     dataSet_temp = dataSet.A.tolist()
