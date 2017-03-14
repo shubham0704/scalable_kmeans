@@ -17,12 +17,12 @@ def distEclud(vecA, vecB):
 
 def createCent(dataSet, K,sampling_factor=2):
     '''
-		Parameters:
-		-----------
-		
-		dataSet: numpy.matrix
-		K: integer, number of clusters
-		sampling_factor: integer
+        Parameters:
+        -----------
+        
+        dataSet: numpy.matrix
+        K: integer, number of clusters
+        sampling_factor: integer
     
     '''
         
@@ -57,13 +57,13 @@ def createCent(dataSet, K,sampling_factor=2):
         
     w = [0 for _ in range(len(candidate_centers))]
     for i in range(len(dataSet_temp)):
-		minDist = inf
-		for j,c in enumerate(candidate_centers):
-				dist = distEclud(c, array(dataSet_temp[i]))
-				if dist < minDist:
-					minDist = dist
-					index = j
-		w[index]+=1
+        minDist = inf
+        for j,c in enumerate(candidate_centers):
+                dist = distEclud(c, array(dataSet_temp[i]))
+                if dist < minDist:
+                    minDist = dist
+                    index = j
+        w[index]+=1
         
     #select k-clusters according to kmeans++
     w = array(w)    
@@ -73,12 +73,11 @@ def createCent(dataSet, K,sampling_factor=2):
     for k in range(K):
         r = random.rand()
         for j,p in enumerate(cumsprobs):
-            if r < p:
+            if r < p and candidate_centers[j] not in elected_centers:
                 index = j
-                if candidate_centers[index] not in elected_centers:
-					elected_centers.append(candidate_centers[index])
-					break
-				
+                elected_centers.append(candidate_centers[index])
+                break
+                
                
     return elected_centers
         
