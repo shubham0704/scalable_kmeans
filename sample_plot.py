@@ -24,6 +24,7 @@ x = dataSet[:,0]
 y = dataSet[:,1]
 Cluster = np.array(clusterAssgn[:,0])
 print centers
+print 'cluster:',Cluster
 fig = plt.figure()
 ax = fig.add_subplot(111)
 scatter = ax.scatter(x,y,c=Cluster,s=50)
